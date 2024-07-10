@@ -21,11 +21,21 @@ export default function TextForm(props) {
     setText(newText);
   };
 
-  const handleSubmitClick = () => {
-   let newText = text.concat('Thank you! Your response has been submitted');
-   setText(newText);
+  const handleCopy = () => {
+    var text = document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
 
-  }
+  const handleExtraSpace = () => {
+    let newText = text.split(/[  ]+/);
+    setText(newText.join(" "));
+  };
+
+  const handleSubmitClick = () => {
+    let newText = text.concat("Thank you! Your response has been submitted");
+    setText(newText);
+  };
 
   //on change is necessary as it helps to write on the text area
   const handleOnChange = (event) => {
@@ -55,9 +65,19 @@ export default function TextForm(props) {
           Convert to Lowercase
         </button>
 
-        <button className="div submit" onClick={handleSubmitClick}>Submit</button>
+        <button className="div submit" onClick={handleSubmitClick}>
+          Submit
+        </button>
 
-        <button className="div div-primary mx-3" onClick={handleClearClick}>
+        <button className="div div-primary mx-3" onClick={handleCopy}>
+          Copy Text
+        </button>
+
+        <button className="div div-primary mx-3" onClick={handleExtraSpace}>
+          Remove Extra Space
+        </button>
+
+        <button className="div div-primary " onClick={handleClearClick}>
           Clear
         </button>
       </div>
