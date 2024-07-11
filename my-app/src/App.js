@@ -4,17 +4,25 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 
-
 function App() {
-  const [mode, setMode] = useState(`dark`); // whether dark mode is enable or not
+  const [mode, setMode] = useState(`light`); // whether dark mode is enable or not
+
+  const toggleMode = () => {
+    if (mode === "light") {
+      setMode("dark");
+      document.body.style.backgroundColor = '#393838';
+    } else {
+      setMode("light");
+      document.body.style.backgroundColor = 'white';
+    }
+  };
   return (
     <>
-      <Navbar title="Skin Media" aboutText="About Us" mode= {mode}/>
+      <Navbar title="Skin Media" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
 
       <div className="container my-3">
-        <TextForm heading="Enter the text to analyse below:" />
+        <TextForm heading="Enter the text to analyse below:" mode={mode}/>
         {/* <About/> */}
-        <h3>testing ok </h3>
       </div>
     </>
   );
