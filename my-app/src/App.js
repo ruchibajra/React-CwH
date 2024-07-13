@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import "./App.css";
-// import About from "./components/About";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// import {
+//   createBrowserRouter,
+//   RouterProvider,
+//   Route,
+//   Link,
+//   Routes
+// } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState(`light`); // whether dark mode is enable or not
@@ -32,6 +42,15 @@ function App() {
       showAlert("Light mode has been enabled", "success");
       document.title = "TextUtils - Light Mode";
     }
+
+    // makes the tab title reappear again and again
+    // setInterval(() => {
+    //   document.title = "Install TextUtils Now";
+    // }, 2000);
+
+    // setInterval(() => {
+    //   document.title = "TextUtils is a great app!!!";
+    // }, 1500);
   };
 
   const toggleRedMode = () => {
@@ -49,7 +68,8 @@ function App() {
   };
   return (
     <>
-      <Navbar
+    <Router>
+    <Navbar
         title="Skin Media"
         aboutText="About Us"
         mode={mode}
@@ -59,13 +79,17 @@ function App() {
       <Alert alert={alert} />
 
       <div className="container my-3">
-        <TextForm
-          showAlert={showAlert}
-          heading="Enter the text to analyse below:"
-          mode={mode}
-        />
-        {/* <About/> */}
+          <Routes>
+            <Route path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyse below:" mode={mode}/>}/>
+            <Route path="/about" element={<About/>}/>
+
+          </Routes>          
       </div>
+
+    </Router>
+      
+
+    
     </>
   );
 }
