@@ -9,32 +9,44 @@ export default function TextForm(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase!", "success")
+
   };
 
   const handleLowClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to lowercase!", "success")
+
   };
 
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
+    props.showAlert("The text has been all cleared!", "success")
+
   };
 
   const handleCopy = () => {
     var text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Text copied to clipboard!", "success")
+
   };
 
   const handleExtraSpace = () => {
     let newText = text.split(/[  ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra spaces has been removed!", "success")
+
   };
 
   const handleSubmitClick = () => {
     let newText = text.concat("Thank you! Your response has been submitted");
     setText(newText);
+    props.showAlert("The text has been submitted!", "success")
+
   };
 
   //on change is necessary as it helps to write on the text area
@@ -86,7 +98,7 @@ export default function TextForm(props) {
       <div className="container" style={{color: props.mode === 'dark' ? 'white' : '#042743'}}>
         <h1 className="my-2">Your Text Summary</h1>
         <p>
-          {text.split(" ").length} words, {text.length} characters
+          {text.split(" ").length - 1} words, {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes to read </p>
         <h1>Preview</h1>
