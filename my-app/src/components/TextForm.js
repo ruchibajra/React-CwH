@@ -42,12 +42,12 @@ export default function TextForm(props) {
 
   };
 
-  const handleSubmitClick = () => {
-    let newText = text.concat("Thank you! Your response has been submitted");
-    setText(newText);
-    props.showAlert("The text has been submitted!", "success")
+  // const handleSubmitClick = () => {
+  //   let newText = text.concat("Thank you! Your response has been submitted");
+  //   setText(newText);
+  //   props.showAlert("The text has been submitted!", "success")
 
-  };
+  // };
 
   //on change is necessary as it helps to write on the text area
   const handleOnChange = (event) => {
@@ -78,9 +78,9 @@ export default function TextForm(props) {
           Convert to Lowercase
         </button>
 
-        <button className="btn btn-primary mx-2"  onClick={handleSubmitClick}>
+        {/* <button className="btn btn-primary mx-2"  onClick={handleSubmitClick}>
           Submit
-        </button>
+        </button> */}
 
         <button className="btn btn-primary mx-2"  onClick={handleCopy}>
           Copy Text

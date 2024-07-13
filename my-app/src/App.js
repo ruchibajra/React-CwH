@@ -1,19 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
-import About from "./components/About";
+// import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// import {
-//   createBrowserRouter,
-//   RouterProvider,
-//   Route,
-//   Link,
-//   Routes
-// } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState(`light`); // whether dark mode is enable or not
@@ -53,40 +46,46 @@ function App() {
     // }, 1500);
   };
 
-  const toggleRedMode = () => {
-    if (mode === "light") {
-      setMode("dark");
-      document.body.style.backgroundColor = "red";
-      showAlert("Dark Red mode has been enabled", "success");
-      document.title = "TextUtils - Red Mode";
-    } else {
-      setMode("light");
-      document.body.style.backgroundColor = "white";
-      showAlert("Light mode has been enabled", "success");
-      document.title = "TextUtils - Light Mode";
-    }
-  };
+  // const toggleRedMode = () => {
+  //   if (mode === "light") {
+  //     setMode("dark");
+  //     document.body.style.backgroundColor = "red";
+  //     showAlert("Dark Red mode has been enabled", "success");
+  //     document.title = "TextUtils - Red Mode";
+  //   } else {
+  //     setMode("light");
+  //     document.body.style.backgroundColor = "white";
+  //     showAlert("Light mode has been enabled", "success");
+  //     document.title = "TextUtils - Light Mode";
+  //   }
+  // };
   return (
     <>
-    <Router>
+    {/* <Router> */}
     <Navbar
         title="Skin Media"
         aboutText="About Us"
         mode={mode}
         toggleMode={toggleMode}
-        toggleRedMode={toggleRedMode}
+        // toggleRedMode={toggleRedMode}
       />
       <Alert alert={alert} />
 
       <div className="container my-3">
-          <Routes>
-            <Route path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyse below:" mode={mode}/>}/>
-            <Route path="/about" element={<About/>}/>
+          {/* <Routes> */}
+            {/* React does partial matching in routes so muct used exact to make sure react direct it to the exam path given.
+             users -> component 1
+             users/home -> component 2 */}
+           
+            {/* <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyse below:" mode={mode}/>}/> */}
+            {/* <Route exact path="/about" element={<About/>}/> */}
 
-          </Routes>          
+          {/* </Routes>           */}
+
+          <TextForm showAlert={showAlert} heading="Enter the text to analyse below:" mode={mode}/>
       </div>
 
-    </Router>
+    {/* </Router> */}
       
 
     
